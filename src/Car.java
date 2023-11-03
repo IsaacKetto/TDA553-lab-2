@@ -1,4 +1,3 @@
-import java.awt.GraphicsEnvironment;
 import java.awt.*;
 
 public class Car implements Movable {
