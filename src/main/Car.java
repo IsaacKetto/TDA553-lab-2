@@ -1,57 +1,47 @@
-import java.awt.GraphicsEnvironment;
 import java.awt.*;
 
-public class Car implements Movable {
+
+public abstract class Car implements Movable {
 
     protected int nrDoors; // Number of doors on the car
     protected double enginePower; // Engine power of the car
     protected double currentSpeed; // The current speed of the car
     protected Color color; // Color of the car
     public String modelName; // The car model name
-  	protected int[] position;
+	protected float[] position;
 	protected Direction direction;
 
-	enum Direction {
-		NORTH,
-		EAST,
-		SOUTH,
-		WEST;
+	public enum Direction {
+		NORTH, EAST, SOUTH, WEST;
 
-		private static final Direction[] vals = values();
+		private static final Direction[] directions = values();
 
 		public Direction left() {
-			return vals[(this.ordinal() - 1) % 4];
+			return directions[Math.floorMod(this.ordinal() - 1, 4)];
 		}
 
 		public Direction right() {
-			return vals[(this.ordinal() + 1) % 4];
+			return directions[Math.floorMod(this.ordinal() + 1, 4)];
 		}
 	}
 
-	public void Car() {
-        stopEngine();
-		position = new int[2];
+	public Car(int nrDoors, double enginePower, Color color, String modelName) {
+        this.nrDoors = nrDoors;
+		this.enginePower = enginePower;
+		this.color = color;
+		this.modelName = modelName;
+		currentSpeed = 0;
+		position = new float[2];
 		direction = Direction.NORTH;
 	}
 
 	public void move() {
 		switch(direction) {
-			case Direction.NORTH:
-				position[1] += currentSpeed;
-				break;
-
-			case Direction.EAST:
-				position[0] += currentSpeed;
-				break;
-
-			case Direction.SOUTH:
-				position[1] -= currentSpeed;
-				break;
-
-			case Direction.WEST:
-				position[0] -= currentSpeed;
-				break;
-		}	
+			case NORTH: position[1] += currentSpeed; break;
+			case EAST: 	position[0] += currentSpeed; break;
+			case SOUTH: position[1] -= currentSpeed; break;
+			case WEST: 	position[0] -= currentSpeed; break;
+		}
 	}
 
 	public void turnLeft() {
@@ -81,6 +71,14 @@ public class Car implements Movable {
 	    color = clr;
     }
 
+	public float[] getPosition() {
+		return position;
+	}
+
+	public Direction getDirection() {
+		return direction;
+	}
+
     public void startEngine(){
 	    currentSpeed = 0.1;
     }
@@ -102,12 +100,12 @@ public class Car implements Movable {
     }
     
     public void gas(double amount) {
-		if (amount > 1 || amount < 0) { return; }
+		if (amount > 1 || amount < 0) return;
 		incrementSpeed(amount);
     }
 
     public void brake(double amount){	
-		if (amount > 1 || amount < 0) { return; }
+		if (amount > 1 || amount < 0) return;
         decrementSpeed(amount);
     }
 }
