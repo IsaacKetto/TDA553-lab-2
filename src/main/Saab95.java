@@ -13,7 +13,7 @@ public class Saab95 extends Car {
 		);
 	    turboOn = false;
     }
-    
+    public boolean getTurboOn(){return turboOn; }
     public void setTurboOn() {
 	    turboOn = true;
     }
