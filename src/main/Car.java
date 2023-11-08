@@ -1,15 +1,14 @@
 import java.awt.*;
 
-
 public abstract class Car implements Movable {
 
     protected int nrDoors; // Number of doors on the car
     protected double enginePower; // Engine power of the car
-    protected double currentSpeed; // The current speed of the car
+    protected double currentSpeed = 0; // The current speed of the car
     protected Color color; // Color of the car
-    public String modelName; // The car model name
-	protected float[] position;
-	protected Direction direction;
+    protected String modelName; // The car model name
+	protected double[] position = new double[2];
+	protected Direction direction = Direction.NORTH;
 
 	public enum Direction {
 		NORTH, EAST, SOUTH, WEST;
@@ -30,9 +29,6 @@ public abstract class Car implements Movable {
 		this.enginePower = enginePower;
 		this.color = color;
 		this.modelName = modelName;
-		currentSpeed = 0;
-		position = new float[2];
-		direction = Direction.NORTH;
 	}
 
 	public void move() {
@@ -45,33 +41,37 @@ public abstract class Car implements Movable {
 	}
 
 	public void turnLeft() {
-		direction = direction.left(); 
+		direction = direction.left();
 	}
 
 	public void turnRight() {
 		direction = direction.right();
 	}
 
-    public int getNrDoors(){
+    public int getNrDoors() {
         return nrDoors;
     }
-    public double getEnginePower(){
+    public double getEnginePower() {
         return enginePower;
     }
 
-    public double getCurrentSpeed(){
+    public double getCurrentSpeed() {
         return currentSpeed;
     }
 
-    public Color getColor(){
+    public Color getColor() {
         return color;
     }
 
-    public void setColor(Color clr){
+    public void setColor(Color clr) {
 	    color = clr;
     }
 
-	public float[] getPosition() {
+	public String getModelName() {
+		return modelName;
+	}
+
+	public double[] getPosition() {
 		return position;
 	}
 
@@ -79,23 +79,23 @@ public abstract class Car implements Movable {
 		return direction;
 	}
 
-    public void startEngine(){
+    public void startEngine() {
 	    currentSpeed = 0.1;
     }
 
-    public void stopEngine(){
+    public void stopEngine() {
 	    currentSpeed = 0;
     }
 
-    public double speedFactor(){
+    protected double speedFactor() {
         return enginePower * 0.01;
     }
 
-    private void incrementSpeed(double amount){
+    private void incrementSpeed(double amount) {
         currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, enginePower);
     }
 
-	private void decrementSpeed(double amount){
+	private void decrementSpeed(double amount) {
         currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
     }
     
@@ -104,7 +104,7 @@ public abstract class Car implements Movable {
 		incrementSpeed(amount);
     }
 
-    public void brake(double amount){	
+    public void brake(double amount) {	
 		if (amount > 1 || amount < 0) return;
         decrementSpeed(amount);
     }
