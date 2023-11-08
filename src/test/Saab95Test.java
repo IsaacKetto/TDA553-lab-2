@@ -1,9 +1,12 @@
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 public class Saab95Test {
 	private final Saab95 saab95 = new Saab95();
+	private final double delta = 0.0001;
 
 	@Test
 	public void testTurboOnInitializedAsFalse(){
@@ -25,12 +28,12 @@ public class Saab95Test {
 	@Test
 	public void testSpeedFactorWithNoTurbo(){
 		saab95.setTurboOff();
-		assertEquals(saab95.getEnginePower()*0.01*1, saab95.speedFactor());
+		assertEquals(saab95.getEnginePower()*0.01*1, saab95.speedFactor(), delta);
 	}
 
 	@Test
 	public void testSpeedFactorWithTurbo(){
 		saab95.setTurboOn();
-		assertEquals(saab95.getEnginePower()*0.01*1.3, saab95.speedFactor());
+		assertEquals(saab95.getEnginePower()*0.01*1.3, saab95.speedFactor(), delta);
 	}
 }
