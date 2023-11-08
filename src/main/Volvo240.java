@@ -1,3 +1,4 @@
+
 import java.awt.*;
 
 public class Volvo240 extends Car {
@@ -12,6 +13,8 @@ public class Volvo240 extends Car {
 			"Volvo240"		// modelName
 		);
     }
+
+	public double getTrimFactor(){return trimFactor;}
     
 	@Override
     public double speedFactor() {
