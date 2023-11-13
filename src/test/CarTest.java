@@ -12,7 +12,7 @@ public class CarTest {
 
 	private class DummyCar extends Car {
 		public DummyCar() {
-			super(2, 100, Color.blue, "Dummy");
+			super(2, 100, Color.blue, "Dummy", 1000);
 		}
 	}
 
@@ -45,6 +45,11 @@ public class CarTest {
 	@Test
 	public void testModelNameInitializedAsDummy() {
 		assertEquals("Dummy", car.getModelName()); 
+	}
+
+	@Test
+	public void testWeightInitializedAs1000() {
+		assertEquals(1000, car.getWeight(), delta); 
 	}
 
 	@Test 

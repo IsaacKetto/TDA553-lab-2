@@ -10,11 +10,14 @@ public class Volvo240 extends Car {
 			4,				// nrDoors
 			100, 			// enginePower
 			Color.black, 	// color
-			"Volvo240"		// modelName
+			"Volvo240",		// modelName
+			1465			// weight 
 		);
     }
 
-	public double getTrimFactor(){return trimFactor;}
+	public double getTrimFactor(){
+		return trimFactor;
+	}
     
 	@Override
     public double speedFactor() {

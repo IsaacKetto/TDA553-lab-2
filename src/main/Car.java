@@ -9,6 +9,7 @@ public abstract class Car implements Movable {
     protected String modelName; // The car model name
 	protected double[] position = new double[2];
 	protected Direction direction = Direction.NORTH;
+	protected double weight;
 
 	public enum Direction {
 		NORTH, EAST, SOUTH, WEST;
@@ -24,11 +25,12 @@ public abstract class Car implements Movable {
 		}
 	}
 
-	public Car(int nrDoors, double enginePower, Color color, String modelName) {
+	public Car(int nrDoors, double enginePower, Color color, String modelName, double weight) {
         this.nrDoors = nrDoors;
 		this.enginePower = enginePower;
 		this.color = color;
 		this.modelName = modelName;
+		this.weight = weight;
 	}
 
 	public void move() {
@@ -77,6 +79,10 @@ public abstract class Car implements Movable {
 
 	public Direction getDirection() {
 		return direction;
+	}
+
+	public double getWeight() {
+		return weight;
 	}
 
     public void startEngine() {

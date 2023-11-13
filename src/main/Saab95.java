@@ -9,7 +9,8 @@ public class Saab95 extends Car {
 			2, 			// nrDoors
 			125,		// enginePower
 			Color.red,  // color
-			"Saab95"	// modelName
+			"Saab95",	// modelName
+			1495		// weight
 		);
 	    turboOn = false;
     }

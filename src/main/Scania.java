@@ -9,8 +9,9 @@ public class Scania extends Car {
 		super(
 			2, 			// nrDoors
 			200,		// enginePower
-			Color.blue,  // color
-			"Scania"	// modelName
+			Color.blue, // color
+			"Scania",	// modelName
+			9645		// weight 
 		);
 	};
 
