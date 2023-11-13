@@ -9,11 +9,15 @@ public class Workshop<T> {
         maxNrCars = amount;
     }
 
-    public void add(T car) {
+    public void carAdd(T car) {
         if ((totalCars + 1) <= maxNrCars) {
             totalCars += 1;
             cars.add(car);
         }
+    }
+
+    public ArrayList<T> getCarlist() {
+        return cars;
     }
 
 

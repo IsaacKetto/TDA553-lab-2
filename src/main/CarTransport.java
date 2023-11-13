@@ -65,7 +65,7 @@ public class CarTransport extends Car {
 
 
     public void loadCar(Car car){
-        if (car instanceof Cartransport) return;
+        if (car instanceof CarTransport) return;
         if (bedDown) {
             if (car.getPosition()[0] > position[0]-5 && car.getPosition()[0] < position[0]+5 && car.getPosition()[1] > position[1]-5 && car.getPosition()[1] < position[1]+5);{
                 currentCarsOnBed.add(car);
