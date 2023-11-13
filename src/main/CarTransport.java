@@ -1,17 +1,18 @@
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Cartransport extends Car {
+public class CarTransport extends Car {
     
     private boolean bedDown;
     private ArrayList<Car> currentCarsOnBed;
     
-    public Cartransport() {
+    public CarTransport() {
 		super(
 			2, 			// nrDoors
 			125,		// enginePower
 			Color.red,  // color
-			"Biltransport1337"	// modelName
+			"Biltransport1337",	// modelName
+			7495				// weight
 		);
         currentCarsOnBed = new ArrayList<Car>();
 	    bedDown = false;
