@@ -59,6 +59,10 @@ public abstract class Car implements Movable {
         return currentSpeed;
     }
 
+	protected void setCurrentSpeed(double amount){
+		currentSpeed = amount;
+	}
+
     public Color getColor() {
         return color;
     }
@@ -73,6 +77,10 @@ public abstract class Car implements Movable {
 
 	public double[] getPosition() {
 		return position;
+	}
+
+	protected void setPosition(double[] amount) {
+		position = amount;
 	}
 
 	public Direction getDirection() {
